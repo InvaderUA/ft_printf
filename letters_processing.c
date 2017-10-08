@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 20:17:15 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 18:32:40 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 19:45:03 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,23 @@ int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
 {
 	int num;
 	char *output;
+	wchar_t *wh_output;
 
 	num = 0;
 	if (buffer->convertion_type == 'c' || buffer->convertion_type == 'C')
 		num = ft_charproc(buffer, va_arg(arguments, int));
 	else if (buffer->convertion_type == 's' || buffer->convertion_type == 'S')
 	{
-		output = va_arg(arguments, char *);
-		num = ft_strprocessing(buffer, output);
+		if (buffer->convertion_type == 's' && buffer->convertion_type != 4)
+		{
+			output = va_arg(arguments, char *);
+			num = ft_strprocessing(buffer, output);
+		}
+		else
+		{
+			wh_output = va_arg(arguments, wchar_t *);
+			num = ft_wstringprocessing(buffer, wh_output);
+		}
 	}
 	return (num);
 }
@@ -79,7 +88,7 @@ int		ft_strprocessing(t_printlist *buffer, char *output)
 
 	temp = ft_strnew(1);
 	if (!output)
-		output = ft_strdup("(null)");
+		output = ft_strdup("(null)"); 
 	ft_f_ignore_checker_digit(buffer, output);
 	output = ft_strprecision(buffer, output);
 	if (buffer->z_flag)
