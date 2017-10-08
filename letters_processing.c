@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 20:17:15 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 18:24:02 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 18:32:40 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
 {
 	int num;
 	char *output;
-	wchar_t *output_w;
 
 	num = 0;
 	if (buffer->convertion_type == 'c' || buffer->convertion_type == 'C')
