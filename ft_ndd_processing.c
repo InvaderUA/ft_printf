@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 18:38:46 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 19:22:50 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 19:25:17 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char 	*ft_dies_proc(t_printlist *buffer, char *output, char *number)
 		output = ft_bufiller(output, 'X');
 	else if (buffer->convertion_type == 'p' 
 			|| buffer->convertion_type == 'x')
-		output = ft_buffiller(output, 'x');
+		output = ft_bufiller(output, 'x');
 	return (output);
 }
 
