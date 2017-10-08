@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 18:20:28 by klut              #+#    #+#             */
-/*   Updated: 2017/10/05 18:24:17 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 18:23:30 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ uintmax_t	ft_u_cast(t_printlist *buffer, va_list arguments)
 	else if (buffer->specificator == 3)
 		num = (unsigned long long int)num;
 	else if (buffer->specificator == 4 || buffer->convertion_type == 'U'
-										  || buffer->convertion_type == 'O')
+			|| buffer->convertion_type == 'O' 
+			|| buffer->convertion_type == 'p')
 		num = (unsigned long int)num;
 	else if (buffer->specificator == 5)
 		num = (unsigned short int)num;

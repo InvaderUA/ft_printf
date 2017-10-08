@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 18:38:46 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 17:44:16 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 18:23:45 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_dig_output_uo(char *output, char *number, t_printlist *buffer)
 	i = -1;
 	temp = ft_strnew(0);
 	ft_f_ignore_checker_digit(buffer, number);
-	if (buffer->h_flag)
+	if (buffer->h_flag || buffer->convertion_type == 'p')
 		output = ft_dies_proc(buffer, output, number);
 	output = ft_precision_filler(buffer, output, number);
 	output = ft_strjoin(output, number);

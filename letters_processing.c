@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 20:17:15 by klut              #+#    #+#             */
-/*   Updated: 2017/10/06 20:17:25 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 18:24:02 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,8 @@ int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
 		num = ft_charproc(buffer, va_arg(arguments, int));
 	else if (buffer->convertion_type == 's' || buffer->convertion_type == 'S')
 	{
-		if (buffer->convertion_type == 's' && buffer->specificator != 4)
-		{
-			output = va_arg(arguments, char *);
-			num = ft_strprocessing(buffer, output);
-		}
-		else
-		{
-			output_w = va_arg(arguments, wchar_t *);
-			num = ft_wstringprocessing(buffer, output_w);
-		}
+		output = va_arg(arguments, char *);
+		num = ft_strprocessing(buffer, output);
 	}
 	return (num);
 }
@@ -45,7 +37,7 @@ int 	ft_charproc(t_printlist *buffer, int character)
 
 	output = ft_strnew(1);
 	tmp = ft_strnew(1);
-	output = ft_whitechar_convertion(character);
+	output[0] = character;
 	if (buffer->z_flag == 1)
 		tmp = ft_precision_filler(buffer, tmp, output);
 	else
