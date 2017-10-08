@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/04 17:05:46 by klut              #+#    #+#             */
-/*   Updated: 2017/10/04 17:10:20 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 20:56:34 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ char	*ft_precision_filler(t_printlist *buffer, char *output, char *number)
 		output = ft_bufiller(output, '0');
 	if (buffer->z_flag == 1)
 	{
-		o_length = buffer->min_width - (ft_strlen(output) + ft_strlen(number));
+		if (output[0] == '\0' && buffer->convertion_type == 'c')
+			o_length = buffer->min_width - 1 - (ft_strlen(output) + ft_strlen(number));
+		else
+			o_length = buffer->min_width - (ft_strlen(output) + ft_strlen(number));
 		while (o_length-- > 0)
 			output = ft_bufiller(output, '0');
 	}
