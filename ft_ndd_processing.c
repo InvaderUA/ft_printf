@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/05 18:38:46 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 20:16:02 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 20:22:52 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ char 	*ft_zeroproc(char *output, char *number, t_printlist *buffer)
 		output = ft_bufiller(output, ' ');
 	if (buffer->convertion_type == 'p')
 		output = ft_dies_proc(buffer, output, number);
-	if (buffer->h_flag && buffer->convertion_type == 'o'
-			&& buffer->convertion_type == 'O' && buffer->precision == 0)
+	if (buffer->h_flag && buffer->precision == 0 &&
+			(buffer->convertion_type == 'o' || buffer->convertion_type == 'O'))
 		output = ft_bufiller(output, '0');
 	if (buffer->min_width == 0 && buffer->precision == -1)
 		output = ft_bufiller(output, '0');
