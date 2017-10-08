@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/06 20:17:15 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 19:45:03 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/08 19:47:40 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
 		num = ft_charproc(buffer, va_arg(arguments, int));
 	else if (buffer->convertion_type == 's' || buffer->convertion_type == 'S')
 	{
-		if (buffer->convertion_type == 's' && buffer->convertion_type != 4)
+		if (buffer->convertion_type == 's' && buffer->specificator != 4)
 		{
 			output = va_arg(arguments, char *);
 			num = ft_strprocessing(buffer, output);
