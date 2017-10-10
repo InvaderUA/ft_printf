@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/20 10:58:00 by klut              #+#    #+#             */
-/*   Updated: 2017/09/20 10:58:03 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:56:37 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:56:38 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ int 	ft_format_regime(const char *arg_data, int i, t_printlist *buffer)
 	{
 		if (ft_convletter(arg_data, i) == 1)
 		{
-			buffer->convertion_type = arg_data[i];
+			buffer->ct = arg_data[i];
 			return (i);
 		}
-		i++;
+		else if (ft_isprint(arg_data[i]))
+			buffer->data = ft_bufiller(buffer->data, arg_data[i]);
+		return (i);
 	}
-	return (i);
+	return (i - 1);
 }
 
 void	ft_conv_init(t_printlist *buffer)

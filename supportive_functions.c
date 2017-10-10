@@ -15,13 +15,14 @@
 void		ft_f_ignore_checker_digit(t_printlist *buffer, char *number)
 {
 	if (number[0] == '-')
-	{
-		buffer->p_flag = 0;
-		buffer->s_flag = 0;
-	}
+		{
+			buffer->p_flag = 0;
+			buffer->s_flag = 0;
+		}
 	if (buffer->p_flag)
 		buffer->s_flag = 0;
-	if (buffer->precision != -1 || buffer->m_flag)
+	if (buffer->ct != 's' && buffer->ct != 'S' && buffer->ct != '%' &&
+			buffer->ct && (buffer->precision > -1 || buffer->m_flag))
 		buffer->z_flag = 0;
 }
 
@@ -45,8 +46,12 @@ char 		*ft_strprecision(t_printlist *buffer, char *output)
 	i = 0;
 	if (buffer->precision > -1)
 	{
+		if (buffer->ct == 'S' && buffer->min_width == 0)
+			buffer->precision--;
+		else if(buffer->precision < buffer->min_width && !ft_isprint(output[0]))
+			buffer->precision--;
 		new = ft_strnew(buffer->precision);
-		while (buffer->precision-- > 0)
+		while (buffer->precision-- > 0 && output[i] != '\0')
 		{
 			new[i] = output[i];
 			i++;

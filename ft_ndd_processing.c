@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/05 18:38:46 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 20:38:20 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:56:12 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:56:14 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_dig_output_uo(char *output, char *number, t_printlist *buffer)
 	i = -1;
 	temp = ft_strnew(0);
 	ft_f_ignore_checker_digit(buffer, number);
-	if (buffer->h_flag || buffer->convertion_type == 'p')
+	if (buffer->h_flag || buffer->ct == 'p')
 		output = ft_dies_proc(buffer, output, number);
 	output = ft_precision_filler(buffer, output, number);
 	output = ft_strjoin(output, number);
@@ -29,7 +29,7 @@ char	*ft_dig_output_uo(char *output, char *number, t_printlist *buffer)
 		output = ft_strjoin(output, temp);
 	else
 		output = ft_strjoin(temp, output);
-	if (buffer->convertion_type == 'x' || buffer->convertion_type == 'p')
+	if (buffer->ct == 'x' || buffer->ct == 'p')
 	{
 		while (output[++i] != '\0')
 			output[i] = ft_tolower(output[i]);
@@ -39,15 +39,15 @@ char	*ft_dig_output_uo(char *output, char *number, t_printlist *buffer)
 
 char 	*ft_dies_proc(t_printlist *buffer, char *output, char *number)
 {
-	if ((buffer->convertion_type == 'x' && number[0] == '0')
-		|| (buffer->convertion_type == 'X' && number[0] == '0'))
+	if ((buffer->ct == 'x' && number[0] == '0')
+		|| (buffer->ct == 'X' && number[0] == '0'))
 		return (output);
 	output = ft_bufiller(output, '0');
-	if (buffer->convertion_type == 'X')
+	if (buffer->ct == 'X')
 		output = ft_bufiller(output, 'X');
-	else if (buffer->convertion_type == 'p' 
-			|| buffer->convertion_type == 'x')
+	else if (buffer->ct == 'x'|| buffer->ct == 'p')
 		output = ft_bufiller(output, 'x');
+
 	return (output);
 }
 
@@ -58,14 +58,15 @@ char 	*ft_zeroproc(char *output, char *number, t_printlist *buffer)
 
 	temp = ft_strnew(0);
 	ft_f_ignore_checker_digit(buffer, number);
-	if (buffer->p_flag)
+	if (buffer->p_flag && (buffer->ct == 'd' || buffer->ct == 'D'
+						   || buffer->ct == 'i'))
 		output = ft_bufiller(output, '+');
 	if (buffer->s_flag)
 		output = ft_bufiller(output, ' ');
-	if (buffer->convertion_type == 'p')
+	if (buffer->ct == 'p')
 		output = ft_dies_proc(buffer, output, number);
-	if (buffer->h_flag && buffer->precision == 0 &&
-			(buffer->convertion_type == 'o' || buffer->convertion_type == 'O'))
+	if (buffer->h_flag && buffer->precision == 0 && (buffer->ct == 'o'
+	   || buffer->ct == 'O' ))
 		output = ft_bufiller(output, '0');
 	if (buffer->z_flag == 0 && buffer->precision == -1)
 		output = ft_bufiller(output, '0');

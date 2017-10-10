@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/13 17:12:21 by klut              #+#    #+#             */
-/*   Updated: 2017/09/13 17:12:33 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:55:47 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:55:50 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_printlist		*ft_printlist_create(void)
 	t_printlist		*lst;
 
 	lst = (t_printlist *)malloc((sizeof(t_printlist)));
-	lst->data = ft_strnew(1);
 	lst->next = NULL;
 
 	return(lst);
@@ -25,10 +24,11 @@ t_printlist		*ft_printlist_create(void)
 
 t_printlist		ft_lst_refresher(t_printlist *lst)
 {
+	lst->data = ft_strnew(1);
 	lst->f_array = ft_strnew(1);
 	lst->width_array = ft_strnew(1);
 	lst->preci_array = ft_strnew(1);
-	lst->convertion_type = 0;
+	lst->ct = 0;
 	lst->min_width = 0;
 	lst->precision = -1;
 	lst->size = 0;
@@ -62,11 +62,12 @@ int				starting_sequence(const char *arg_data, va_list arguments)
 		else if (arg_data[i] != '\0')
 		{
 			i = ft_format_regime(arg_data, i, buffer);
-			if (buffer->convertion_type)
+			if (buffer->ct)
 				num = num + ft_processing(buffer, arguments);
+			else
+				num = num + ft_invalid_processing(buffer);
 		}
 	}
-	ft_putstr(buffer->data);
 	return (num);
 }
 

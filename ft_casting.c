@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/05 18:20:28 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 18:23:30 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:56:59 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:57:01 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ uintmax_t	ft_u_cast(t_printlist *buffer, va_list arguments)
 		num = (uintmax_t)num;
 	else if (buffer->specificator == 3)
 		num = (unsigned long long int)num;
-	else if (buffer->specificator == 4 || buffer->convertion_type == 'U'
-			|| buffer->convertion_type == 'O' 
-			|| buffer->convertion_type == 'p')
+	else if (buffer->specificator == 4 || buffer->ct == 'U'
+			 || buffer->ct == 'O'
+			 || buffer->ct == 'p')
 		num = (unsigned long int)num;
 	else if (buffer->specificator == 5)
 		num = (unsigned short int)num;
@@ -47,7 +47,7 @@ intmax_t	ft_s_cast(t_printlist *buffer, va_list arguments)
 		num = (intmax_t)num;
 	else if (buffer->specificator == 3)
 		num = (long long int)num;
-	else if (buffer->specificator == 4 || buffer->convertion_type == 'D')
+	else if (buffer->specificator == 4 || buffer->ct == 'D')
 		num = (long int)num;
 	else if (buffer->specificator == 5)
 		num = (short int)num;

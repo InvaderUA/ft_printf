@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 17:56:00 by klut              #+#    #+#             */
-/*   Updated: 2017/10/04 17:56:03 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:52:42 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:52:45 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,19 @@ int		ft_du_convertion(t_printlist *buffer, unsigned long int num)
 
 	number = ft_strnew(20);
 	output = ft_strnew(1);
-	if (buffer->convertion_type == 'u' || buffer->convertion_type == 'U')
+	if (buffer->ct == 'u' || buffer->ct == 'U')
 		number = ft_itoa_base_u(num, number, 10);
-	if (buffer->convertion_type == 'o' || buffer->convertion_type == 'O')
+	if (buffer->ct == 'o' || buffer->ct == 'O')
 		number = ft_itoa_base_u(num, number, 8);
-	if (buffer->convertion_type == 'x' || buffer->convertion_type == 'X'
-		|| buffer->convertion_type == 'p')
+	if (buffer->ct == 'x' || buffer->ct == 'X'
+		|| buffer->ct == 'p')
 		number = ft_itoa_base_u(num, number, 16);
 	if (number[0] == '0')
 		output = ft_zeroproc(output, number, buffer);
-	else if (buffer->convertion_type == 'u' || buffer->convertion_type == 'U')
+	else if (buffer->ct == 'u' || buffer->ct == 'U')
 		output = ft_dig_output_u(output, number, buffer);
-	else if (buffer->convertion_type == 'o' || buffer->convertion_type == 'O'
-		|| buffer->convertion_type == 'x' || buffer->convertion_type == 'X'
-		|| buffer->convertion_type == 'p')
+	else if (buffer->ct == 'o' || buffer->ct == 'O' || buffer->ct == 'x'
+			 || buffer->ct == 'X' || buffer->ct == 'p')
 		output = ft_dig_output_uo(output, number, buffer);
 	ft_putstr(output);
 	return (readed = ft_strlen(output));

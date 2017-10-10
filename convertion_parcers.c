@@ -69,7 +69,7 @@ int 	ft_precision_parcing(t_printlist *buffer, int i)
 			}
 			return (i - 1);
 		}
-		else
+		else if (buffer->precision)
 			buffer->precision = 0;
 	}
 	return (i);

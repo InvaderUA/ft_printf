@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/04 17:05:46 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 20:56:34 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:57:21 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:57:29 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,8 @@ char	*ft_precision_filler(t_printlist *buffer, char *output, char *number)
 {
 	int o_length;
 
-	if (buffer->h_flag && (buffer->convertion_type == 'o'
-						   || buffer->convertion_type == 'O'))
-		o_length = buffer->precision - (ft_strlen(number)
-										+ ft_strlen(output));
+	if (buffer->h_flag && (buffer->ct == 'o' || buffer->ct == 'O'))
+		o_length = buffer->precision - (ft_strlen(number) + ft_strlen(output));
 	else if (number[0] == '-')
 		o_length = buffer->precision - ft_strlen(number + 1);
 	else
@@ -93,7 +91,9 @@ char	*ft_precision_filler(t_printlist *buffer, char *output, char *number)
 		output = ft_bufiller(output, '0');
 	if (buffer->z_flag == 1)
 	{
-		if (output[0] == '\0' && buffer->convertion_type == 'c')
+		if (output[0] == '\0' && buffer->ct == 'c' && ft_strlen(number) == 0)
+			o_length = buffer->min_width - 1 - (ft_strlen(output) + ft_strlen(number));
+		else if (output[0] == '\0' && buffer->ct == 'c' && buffer->precision == 0)
 			o_length = buffer->min_width - 1 - (ft_strlen(output) + ft_strlen(number));
 		else
 			o_length = buffer->min_width - (ft_strlen(output) + ft_strlen(number));

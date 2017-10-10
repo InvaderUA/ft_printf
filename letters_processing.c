@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/06 20:17:15 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 19:47:40 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:53:51 by klut              #+#    #+#             */
+/*   Updated: 2017/10/10 12:15:17 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
 {
 	int num;
 	char *output;
-	wchar_t *wh_output;
+	wchar_t *output_w;
 
 	num = 0;
-	if (buffer->convertion_type == 'c' || buffer->convertion_type == 'C')
+	if (buffer->ct == 'c' || buffer->ct == 'C')
 		num = ft_charproc(buffer, va_arg(arguments, int));
-	else if (buffer->convertion_type == 's' || buffer->convertion_type == 'S')
+	else if (buffer->ct == 's' || buffer->ct == 'S')
 	{
-		if (buffer->convertion_type == 's' && buffer->specificator != 4)
+		if (buffer->ct == 's' && buffer->specificator != 4)
 		{
 			output = va_arg(arguments, char *);
 			num = ft_strprocessing(buffer, output);
 		}
 		else
 		{
-			wh_output = va_arg(arguments, wchar_t *);
-			num = ft_wstringprocessing(buffer, wh_output);
+			output_w = va_arg(arguments, wchar_t *);
+			num = ft_wstringprocessing(buffer, output_w);
 		}
 	}
 	return (num);
@@ -88,14 +88,14 @@ int		ft_strprocessing(t_printlist *buffer, char *output)
 
 	temp = ft_strnew(1);
 	if (!output)
-		output = ft_strdup("(null)"); 
+		output = ft_strdup("(null)");
 	ft_f_ignore_checker_digit(buffer, output);
 	output = ft_strprecision(buffer, output);
-	if (buffer->z_flag)
+	if (buffer->z_flag && !buffer->m_flag)
 		temp = ft_precision_filler(buffer, temp, output);
 	else
 		temp = ft_space_filler(buffer, output, temp);
-	if (buffer->m_flag == 1 && buffer->z_flag == 0)
+	if (buffer->m_flag == 1)
 		output = ft_strjoin(output, temp);
 	else
 		output = ft_strjoin(temp, output);
