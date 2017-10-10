@@ -25,7 +25,8 @@ SRC = convertion_buffering.c\
 	  ft_ndd_processing.c\
 	  supportive_functions.c\
 	  unsigned_processing.c\
-	  letters_processing.c
+	  letters_processing.c\
+	  supportive_functions2.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -39,7 +40,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(LIB) all
-	gcc $(CFLAGS) $(SRC)
 	ar rc $(NAME) $(OBJ) $(LIBOBJ)
 	ranlib $(NAME)
 

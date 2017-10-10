@@ -79,7 +79,6 @@ CFLAGS = -c -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(CFLAGS) $(SRC) -I libft.h
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
