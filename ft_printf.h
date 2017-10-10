@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/26 11:57:55 by klut              #+#    #+#             */
-/*   Updated: 2016/12/21 11:06:27 by klut             ###   ########.fr       */
+/*   Created: 2017/10/09 15:54:17 by klut              #+#    #+#             */
+/*   Updated: 2017/10/09 15:54:19 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct		s_printlist
 	char*			data;
 	size_t			content_size;
 	struct s_list	*next;
-	char 			convertion_type;
+	char 			ct;
 	char*			f_array;
 	char*			width_array;
 	char*			preci_array;
@@ -88,5 +88,6 @@ int 				ft_letters_processing(t_printlist *buffer, va_list arguments);
 char				*ft_cspace_filler(t_printlist *buffer, char *output, char *temp, int character);
 int					ft_wstringprocessing(t_printlist *buffer, wchar_t *output);
 int					ft_percent_processing(t_printlist *buffer);
+int 				ft_invalid_processing(t_printlist *buffer);
 
 #endif
