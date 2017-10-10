@@ -6,15 +6,15 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:55:10 by klut              #+#    #+#             */
-/*   Updated: 2017/10/09 15:55:12 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:41:24 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int 	ft_processing(t_printlist *buffer, va_list arguments)
+int		ft_processing(t_printlist *buffer, va_list arguments)
 {
-	int num;
+	int		num;
 
 	num = 0;
 	if (buffer->ct == 'd' || buffer->ct == 'D' || buffer->ct == 'i')
@@ -33,9 +33,9 @@ int 	ft_processing(t_printlist *buffer, va_list arguments)
 
 int		ft_percent_processing(t_printlist *buffer)
 {
-	int num;
-	char *output;
-	char *temp;
+	int		num;
+	char	*output;
+	char	*temp;
 
 	output = ft_strnew(1);
 	output[0] = '%';

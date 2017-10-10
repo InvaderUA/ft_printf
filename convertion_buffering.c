@@ -6,13 +6,13 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/22 16:36:26 by klut              #+#    #+#             */
-/*   Updated: 2017/09/22 17:02:19 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:09:22 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_conv_buffering(const char *arg_data, int i,t_printlist *buffer)
+int		ft_conv_buffering(const char *arg_data, int i, t_printlist *buffer)
 {
 	while (ft_flagcheck(arg_data, i) && arg_data[i] != '\0')
 	{
@@ -22,7 +22,7 @@ int		ft_conv_buffering(const char *arg_data, int i,t_printlist *buffer)
 	return (i);
 }
 
-int 	ft_convletter(const char *arg_data, int i)
+int		ft_convletter(const char *arg_data, int i)
 {
 	if (arg_data[i] == 'd' || arg_data[i] == 'c' || arg_data[i] == 's' ||
 		arg_data[i] == 'x' || arg_data[i] == 'X' || arg_data[i] == 'p'
@@ -34,10 +34,10 @@ int 	ft_convletter(const char *arg_data, int i)
 	return (0);
 }
 
-int 	ft_flagcheck(const char *arg_data, int i)
+int		ft_flagcheck(const char *arg_data, int i)
 {
-	if (arg_data[i] == ' ' || arg_data[i] == '.'|| arg_data[i] == '+'
-		|| arg_data[i] == '-' || arg_data[i] == '0' || arg_data[i] == '#'||
+	if (arg_data[i] == ' ' || arg_data[i] == '.' || arg_data[i] == '+'
+		|| arg_data[i] == '-' || arg_data[i] == '0' || arg_data[i] == '#' ||
 			arg_data[i] == 'l' || arg_data[i] == 'L' || arg_data[i] == 'j'
 			|| arg_data[i] == 'h' || arg_data[i] == 'z' || arg_data[i] == 't')
 		return (1);

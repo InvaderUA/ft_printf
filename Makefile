@@ -15,6 +15,7 @@ NAME = libftprintf.a
 
 SRC = convertion_buffering.c\
 	  convertion_parcers.c\
+	  ft_memory_type_parcing.c\
 	  digits_processing.c\
 	  ft_processing.c\
 	  ft_printf.c\

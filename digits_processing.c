@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/10/09 15:57:21 by klut              #+#    #+#             */
-/*   Updated: 2017/10/09 15:57:29 by klut             ###   ########.fr       */
+/*   Created: 2017/10/10 13:12:31 by klut              #+#    #+#             */
+/*   Updated: 2017/10/10 14:10:11 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int 	ft_digits_cast_processing(t_printlist *buffer, va_list arguments)
+int		ft_digits_cast_processing(t_printlist *buffer, va_list arguments)
 {
-	int num;
-	intmax_t length;
+	int			num;
+	intmax_t	length;
 
 	num = 0;
 	length = ft_s_cast(buffer, arguments);
@@ -25,9 +25,9 @@ int 	ft_digits_cast_processing(t_printlist *buffer, va_list arguments)
 
 int		ft_d_convertion(t_printlist *buffer, long long int num)
 {
-	char 	*number;
+	char	*number;
 	char	*output;
-	int 	filled;
+	int		filled;
 
 	number = ft_strnew(20);
 	output = ft_strnew(1);
@@ -41,9 +41,9 @@ int		ft_d_convertion(t_printlist *buffer, long long int num)
 	return (filled);
 }
 
-char 	*ft_dig_output(char *output, char *number, t_printlist *buffer)
+char	*ft_dig_output(char *output, char *number, t_printlist *buffer)
 {
-	char *temp;
+	char	*temp;
 
 	temp = ft_strnew(0);
 	ft_f_ignore_checker_digit(buffer, number);
@@ -64,41 +64,43 @@ char 	*ft_dig_output(char *output, char *number, t_printlist *buffer)
 
 char	*ft_space_filler(t_printlist *buffer, char *output, char *temp)
 {
-	int o_length;
+	int		o_length;
 
 	o_length = 0;
-
 	o_length = buffer->min_width - ((ft_strlen(output)));
 	if (o_length > 0)
 	{
-		while (o_length-->0)
+		while (o_length-- > 0)
 			temp = ft_bufiller(temp, ' ');
 	}
 	return (temp);
 }
 
-char	*ft_precision_filler(t_printlist *buffer, char *output, char *number)
+char	*ft_precision_filler(t_printlist *buffer, char *out, char *number)
 {
-	int o_length;
+	int		o_len;
 
 	if (buffer->h_flag && (buffer->ct == 'o' || buffer->ct == 'O'))
-		o_length = buffer->precision - (ft_strlen(number) + ft_strlen(output));
+		o_len = buffer->precision - (ft_strlen(number) + ft_strlen(out));
 	else if (number[0] == '-')
-		o_length = buffer->precision - ft_strlen(number + 1);
+		o_len = buffer->precision - ft_strlen(number + 1);
 	else
-		o_length = buffer->precision - ft_strlen(number);
-	while (o_length-- > 0)
-		output = ft_bufiller(output, '0');
+		o_len = buffer->precision - ft_strlen(number);
+	while (o_len-- > 0)
+		out = ft_bufiller(out, '0');
 	if (buffer->z_flag == 1)
 	{
-		if (output[0] == '\0' && buffer->ct == 'c' && ft_strlen(number) == 0)
-			o_length = buffer->min_width - 1 - (ft_strlen(output) + ft_strlen(number));
-		else if (output[0] == '\0' && buffer->ct == 'c' && buffer->precision == 0)
-			o_length = buffer->min_width - 1 - (ft_strlen(output) + ft_strlen(number));
+		if (out[0] == '\0' && buffer->ct == 'c' && ft_strlen(number) == 0)
+			o_len = buffer->min_width - 1 - (ft_strlen(out)
+					+ ft_strlen(number));
+		else if (out[0] == '\0' && buffer->ct == 'c' && buffer->precision == 0)
+			o_len = buffer->min_width - 1 - (ft_strlen(out)
+					+ ft_strlen(number));
 		else
-			o_length = buffer->min_width - (ft_strlen(output) + ft_strlen(number));
-		while (o_length-- > 0)
-			output = ft_bufiller(output, '0');
+			o_len = buffer->min_width - (ft_strlen(out)
+					+ ft_strlen(number));
+		while (o_len-- > 0)
+			out = ft_bufiller(out, '0');
 	}
-	return (output);
+	return (out);
 }

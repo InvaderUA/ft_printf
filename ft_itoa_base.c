@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 15:17:27 by klut              #+#    #+#             */
-/*   Updated: 2017/10/02 15:17:33 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:29:58 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ static int	ft_count_nums(unsigned long long int n, int base)
 
 char		*ft_itoa_base(long long int value, char *str, int base)
 {
-	unsigned long long int	n;
-	int				sign;
-	int				len;
+	unsigned long long int		n;
+	int							sign;
+	int							len;
 
 	sign = 0;
 	if (base < 2 || base > 16)
 		return (0);
 	if (base == 10 && value < 0)
 		sign = 1;
-	n = (value < 0 ? (unsigned long long int)-value : (unsigned long long int)value);
+	n = (value < 0 ? (unsigned long long int)-value
+			: (unsigned long long int)value);
 	len = ft_count_nums(n, base) + sign;
 	str[len] = '\0';
 	while (len > 0)
@@ -54,9 +55,9 @@ char		*ft_itoa_base(long long int value, char *str, int base)
 
 char		*ft_itoa_base_u(unsigned long int value, char *str, int base)
 {
-	unsigned long long int	n;
-	int				sign;
-	int				len;
+	unsigned long long int		n;
+	int							sign;
+	int							len;
 
 	sign = 0;
 	if (base < 2 || base > 16)

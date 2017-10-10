@@ -6,17 +6,17 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:53:51 by klut              #+#    #+#             */
-/*   Updated: 2017/10/10 12:15:17 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:49:43 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
+int		ft_letters_processing(t_printlist *buffer, va_list arguments)
 {
-	int num;
-	char *output;
-	wchar_t *output_w;
+	int			num;
+	char		*output;
+	wchar_t		*output_w;
 
 	num = 0;
 	if (buffer->ct == 'c' || buffer->ct == 'C')
@@ -37,11 +37,11 @@ int 	ft_letters_processing(t_printlist *buffer, va_list arguments)
 	return (num);
 }
 
-int 	ft_charproc(t_printlist *buffer, int character)
+int		ft_charproc(t_printlist *buffer, int character)
 {
-	int num;
-	char *tmp;
-	char *output;
+	int		num;
+	char	*tmp;
+	char	*output;
 
 	output = ft_strnew(1);
 	tmp = ft_strnew(1);
@@ -64,9 +64,10 @@ int 	ft_charproc(t_printlist *buffer, int character)
 	return (num);
 }
 
-char	*ft_cspace_filler(t_printlist *buffer, char *output, char *temp, int character)
+char	*ft_cspace_filler(t_printlist *buffer, char *output,
+		char *temp, int character)
 {
-	int o_length;
+	int		o_length;
 
 	o_length = 0;
 	if (character == 0)
@@ -75,7 +76,7 @@ char	*ft_cspace_filler(t_printlist *buffer, char *output, char *temp, int charac
 		o_length = buffer->min_width - ((ft_strlen(output)));
 	if (o_length > 0)
 	{
-		while (o_length-->0)
+		while (o_length-- > 0)
 			temp = ft_bufiller(temp, ' ');
 	}
 	return (temp);
@@ -83,8 +84,8 @@ char	*ft_cspace_filler(t_printlist *buffer, char *output, char *temp, int charac
 
 int		ft_strprocessing(t_printlist *buffer, char *output)
 {
-	int num;
-	char *temp;
+	int		num;
+	char	*temp;
 
 	temp = ft_strnew(1);
 	if (!output)
@@ -106,11 +107,10 @@ int		ft_strprocessing(t_printlist *buffer, char *output)
 
 int		ft_wstringprocessing(t_printlist *buffer, wchar_t *output)
 {
-	int num;
-
-	char *temp1;
-	char *temp2;
-	char *wchar;
+	int		num;
+	char	*temp1;
+	char	*temp2;
+	char	*wchar;
 
 	wchar = ft_strnew(1);
 	temp1 = ft_strnew(1);

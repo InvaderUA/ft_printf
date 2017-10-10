@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:55:47 by klut              #+#    #+#             */
-/*   Updated: 2017/10/09 15:55:50 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:32:33 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ t_printlist		*ft_printlist_create(void)
 
 	lst = (t_printlist *)malloc((sizeof(t_printlist)));
 	lst->next = NULL;
-
-	return(lst);
+	return (lst);
 }
 
 t_printlist		ft_lst_refresher(t_printlist *lst)
@@ -44,9 +43,9 @@ t_printlist		ft_lst_refresher(t_printlist *lst)
 
 int				starting_sequence(const char *arg_data, va_list arguments)
 {
-	int i;
-	int num;
-	t_printlist *buffer;
+	int				i;
+	int				num;
+	t_printlist		*buffer;
 
 	i = -1;
 	num = 0;
@@ -71,10 +70,10 @@ int				starting_sequence(const char *arg_data, va_list arguments)
 	return (num);
 }
 
-int 	ft_printf(const char *arg_data, ...)
+int				ft_printf(const char *arg_data, ...)
 {
-	int num;
-	va_list arguments;
+	int			num;
+	va_list		arguments;
 
 	va_start(arguments, arg_data);
 	num = starting_sequence(arg_data, arguments);

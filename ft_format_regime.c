@@ -6,13 +6,13 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:56:37 by klut              #+#    #+#             */
-/*   Updated: 2017/10/09 15:56:38 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 14:07:33 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int 	ft_format_regime(const char *arg_data, int i, t_printlist *buffer)
+int		ft_format_regime(const char *arg_data, int i, t_printlist *buffer)
 {
 	i = ft_conv_buffering(arg_data, i + 1, buffer);
 	ft_conv_init(buffer);

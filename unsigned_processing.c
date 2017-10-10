@@ -6,16 +6,16 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/09 15:52:42 by klut              #+#    #+#             */
-/*   Updated: 2017/10/09 15:52:45 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:51:09 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int 	ft_unsigned_digits_processing(t_printlist *buffer, va_list arguments)
+int		ft_unsigned_digits_processing(t_printlist *buffer, va_list arguments)
 {
-	int num;
-	uintmax_t length;
+	int			num;
+	uintmax_t	length;
 
 	num = 0;
 	length = ft_u_cast(buffer, arguments);
@@ -25,9 +25,9 @@ int 	ft_unsigned_digits_processing(t_printlist *buffer, va_list arguments)
 
 int		ft_du_convertion(t_printlist *buffer, unsigned long int num)
 {
-	char 	*number;
+	char	*number;
 	char	*output;
-	int 	readed;
+	int		readed;
 
 	number = ft_strnew(20);
 	output = ft_strnew(1);
@@ -43,7 +43,7 @@ int		ft_du_convertion(t_printlist *buffer, unsigned long int num)
 	else if (buffer->ct == 'u' || buffer->ct == 'U')
 		output = ft_dig_output_u(output, number, buffer);
 	else if (buffer->ct == 'o' || buffer->ct == 'O' || buffer->ct == 'x'
-			 || buffer->ct == 'X' || buffer->ct == 'p')
+			|| buffer->ct == 'X' || buffer->ct == 'p')
 		output = ft_dig_output_uo(output, number, buffer);
 	ft_putstr(output);
 	return (readed = ft_strlen(output));

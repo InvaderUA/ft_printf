@@ -6,7 +6,7 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/02 15:54:14 by klut              #+#    #+#             */
-/*   Updated: 2017/10/02 15:54:16 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 14:08:25 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void		ft_f_ignore_checker_digit(t_printlist *buffer, char *number)
 {
 	if (number[0] == '-')
-		{
-			buffer->p_flag = 0;
-			buffer->s_flag = 0;
-		}
+	{
+		buffer->p_flag = 0;
+		buffer->s_flag = 0;
+	}
 	if (buffer->p_flag)
 		buffer->s_flag = 0;
 	if (buffer->ct != 's' && buffer->ct != 'S' && buffer->ct != '%' &&
@@ -38,17 +38,18 @@ void		ft_sign_swap(char *output, char *number)
 	}
 }
 
-char 		*ft_strprecision(t_printlist *buffer, char *output)
+char		*ft_strprecision(t_printlist *buffer, char *output)
 {
-	char *new;
-	int i;
+	char	*new;
+	int		i;
 
 	i = 0;
 	if (buffer->precision > -1)
 	{
 		if (buffer->ct == 'S' && buffer->min_width == 0)
 			buffer->precision--;
-		else if(buffer->precision < buffer->min_width && !ft_isprint(output[0]))
+		else if (buffer->precision < buffer->min_width
+				&& !ft_isprint(output[0]))
 			buffer->precision--;
 		new = ft_strnew(buffer->precision);
 		while (buffer->precision-- > 0 && output[i] != '\0')
@@ -61,7 +62,7 @@ char 		*ft_strprecision(t_printlist *buffer, char *output)
 	return (output);
 }
 
-char	*ft_wproc2(char *wchar, char *temp1, wchar_t *output)
+char		*ft_wproc2(char *wchar, char *temp1, wchar_t *output)
 {
 	int iter;
 
@@ -70,7 +71,7 @@ char	*ft_wproc2(char *wchar, char *temp1, wchar_t *output)
 		temp1 = ft_strdup("(null)");
 	else
 	{
-		while(output[iter])
+		while (output[iter])
 		{
 			wchar = ft_whitechar_convertion(output[iter]);
 			temp1 = ft_strjoin(temp1, wchar);
@@ -81,7 +82,7 @@ char	*ft_wproc2(char *wchar, char *temp1, wchar_t *output)
 	return (temp1);
 }
 
-char	*ft_whitechar_convertion(int character)
+char		*ft_whitechar_convertion(int character)
 {
 	char *string;
 

@@ -6,16 +6,16 @@
 /*   By: klut <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/08 19:20:16 by klut              #+#    #+#             */
-/*   Updated: 2017/10/08 19:21:22 by klut             ###   ########.fr       */
+/*   Updated: 2017/10/10 13:46:02 by klut             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int 	ft_invalid_processing(t_printlist *buffer)
+int		ft_invalid_processing(t_printlist *buffer)
 {
-	char *temp;
-	int num;
+	char	*temp;
+	int		num;
 
 	temp = ft_strnew(1);
 	if (buffer->z_flag && !buffer->m_flag)
